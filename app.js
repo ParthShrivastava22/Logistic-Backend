@@ -13,7 +13,13 @@ const cookieParser = require("cookie-parser");
 
 connectToDB();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://logistic-frontend-omega.vercel.app",
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());

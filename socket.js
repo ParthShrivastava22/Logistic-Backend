@@ -5,11 +5,18 @@ const driverModel = require("./models/driver.model");
 let io;
 
 function initializeSocket(server) {
-  io = socketIo(server, {
+  const io = socketIo(server, {
     cors: {
-      origin: "*",
+      origin: [
+        "https://logistic-frontend-omega.vercel.app",
+        "http://localhost:3000", // For local testing
+      ],
       methods: ["GET", "POST"],
+      credentials: true,
+      allowedHeaders: ["Content-Type", "Authorization"],
     },
+    path: "/socket.io/", // Explicit path (matches Vercel's routing)
+    transports: ["polling", "websocket"], // Prioritize polling first
   });
 
   io.on("connection", (socket) => {
