@@ -18,13 +18,11 @@ process.on("unhandledRejection", (err) => {
   process.exit(1);
 });
 
-app.use(
-  cors({
-    origin: "https://logistic-frontend-omega.vercel.app",
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: "https://logistic-frontend-ten.vercel.app", // Must match exactly
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  credentials: true
+}));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
