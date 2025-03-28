@@ -8,7 +8,7 @@ function initializeSocket(server) {
   const io = socketIo(server, {
     cors: {
       origin: [
-        "https://logistic-frontend-ten.vercel.app"
+        "https://logistic-frontend-ten.vercel.app",
         "http://localhost:3000", // For local testing
       ],
       methods: ["GET", "POST"],
