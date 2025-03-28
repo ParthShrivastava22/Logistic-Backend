@@ -11,12 +11,12 @@ function initializeSocket(server) {
         "https://logistic-frontend-omega.vercel.app",
         "http://localhost:3000", // For local testing
       ],
-      methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+      methods: ["GET", "POST"],
       credentials: true,
       allowedHeaders: ["Content-Type", "Authorization"],
     },
     path: "/socket.io/", // Explicit path (matches Vercel's routing)
-    transports: ["polling", "websocket"], // Prioritize polling first
+    transports: ["polling"], // Prioritize polling first
   });
 
   io.on("connection", (socket) => {
