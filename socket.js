@@ -11,7 +11,7 @@ function initializeSocket(server) {
         "https://logistic-frontend-omega.vercel.app",
         "http://localhost:3000", // For local testing
       ],
-      methods: ["GET", "POST"],
+      methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
       credentials: true,
       allowedHeaders: ["Content-Type", "Authorization"],
     },

@@ -13,6 +13,11 @@ const cookieParser = require("cookie-parser");
 
 connectToDB();
 
+process.on("unhandledRejection", (err) => {
+  console.error("Unhandled Promise Rejection:", err);
+  process.exit(1);
+});
+
 app.use(
   cors({
     origin: "https://logistic-frontend-omega.vercel.app",

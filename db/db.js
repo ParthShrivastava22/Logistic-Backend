@@ -1,16 +1,18 @@
-// db.js (demo mode using mongodb-memory-server)
-const { MongoMemoryServer } = require("mongodb-memory-server");
-const mongoose = require("mongoose");
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
+db.once("open", () => console.log("MongoDB connection established!"));
 
 async function connectToDb() {
-  if (process.env.DEMO_MODE === "true") {
-    const mongod = await MongoMemoryServer.create();
-    const uri = mongod.getUri();
-    await mongoose.connect(uri);
-    console.log("Connected to in-memory MongoDB (demo mode)");
-  } else {
-    await mongoose.connect(process.env.DB_CONNECT);
-    console.log("Connected to DB");
+  try {
+    await mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      serverSelectionTimeoutMS: 5000,
+    });
+    console.log("Connected to MongoDB Atlas");
+  } catch (err) {
+    console.error("MongoDB connection error:", err);
+    process.exit(1);
   }
 }
 
