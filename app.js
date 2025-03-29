@@ -19,7 +19,7 @@ process.on("unhandledRejection", (err) => {
 });
 
 app.use(cors({
-  origin: "https://logistic-frontend-ten.vercel.app", // Must match exactly
+  origin: "https://logimove.netlify.app", // Must match exactly
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   credentials: true
 }));
