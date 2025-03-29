@@ -26,6 +26,11 @@ app.use(cors({
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.header("Access-Control-Expose-Headers", "X-Custom-Header");
+  next();
+});
 
 app.get("/", (req, res) => {
   res.send("Hello World");
