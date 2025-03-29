@@ -9,6 +9,7 @@ function initializeSocket(server) {
     cors: {
       origin: [
         "https://logistic-frontend-ten.vercel.app",
+        "https://logimove.netlify.app",
         "http://localhost:3000", // For local testing
       ],
       methods: ["GET", "POST"],
